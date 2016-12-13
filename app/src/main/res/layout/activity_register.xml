@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/gray"
+              android:layout_width="match_parent"
+              android:padding="15px"
+              android:gravity="center_horizontal"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+        android:layout_marginTop="350px"
+        android:orientation="horizontal"
+        android:layout_width="500px"
+        android:layout_height="80px">
+        <TextView
+            android:textSize="25px"
+            android:textColor="@color/black"
+            android:text="用户名 ："
+            android:gravity="center"
+            android:layout_width="150px"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/edt_name"
+            android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+            android:textColor="@color/black"
+            android:textSize="25px"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+        android:layout_marginTop="30px"
+        android:orientation="horizontal"
+        android:layout_width="500px"
+        android:layout_height="80px">
+        <TextView
+            android:textSize="25px"
+            android:textColor="@color/black"
+            android:text="密 码 ："
+            android:gravity="center"
+            android:layout_width="150px"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:inputType="textPassword"
+            android:id="@+id/edt_pwd"
+            android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+            android:textColor="@color/black"
+            android:textSize="25px"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+        android:layout_marginTop="30px"
+        android:orientation="horizontal"
+        android:layout_width="500px"
+        android:layout_height="80px">
+        <TextView
+            android:textSize="25px"
+            android:textColor="@color/black"
+            android:text="确认密码 ："
+            android:gravity="center"
+            android:layout_width="150px"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:inputType="textPassword"
+            android:id="@+id/edt_confirmPwd"
+            android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+            android:textColor="@color/black"
+            android:textSize="25px"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30px"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="500px"
+        android:layout_height="80px">
+        <TextView
+            android:id="@+id/tv_cancle"
+            android:text="返回"
+            android:textSize="25px"
+            android:gravity="center"
+            android:padding="15px"
+            android:textColor="@color/white"
+            android:background="@color/gray_black"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_marginLeft="30px"
+            android:text="确定"
+            android:textSize="25px"
+            android:gravity="center"
+            android:padding="15px"
+            android:textColor="@color/white"
+            android:background="@color/orange"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</LinearLayout>
