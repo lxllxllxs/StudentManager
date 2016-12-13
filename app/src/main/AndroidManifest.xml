@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.yiyekeji.studentmanager">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".StuApp"
         android:allowBackup="true"
@@ -20,6 +21,8 @@
         </activity>
         <activity android:name=".ui.MainActivity"/>
         <activity android:name=".ui.RegisterActivity"/>
+        <activity android:name=".ui.AddStudentActivity"/>
+
     </application>
 
 </manifest>

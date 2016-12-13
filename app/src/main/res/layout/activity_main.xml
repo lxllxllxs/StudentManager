@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:padding="15px"
               android:background="@color/gray"
               android:layout_height="match_parent">
     <LinearLayout
+        android:paddingLeft="15px"
+        android:paddingRight="15px"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
@@ -18,7 +19,7 @@
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:layout_width="0dp"
-            android:layout_height="80px"/>
+            android:layout_height="70px"/>
 
         <TextView
             android:layout_marginLeft="20px"
@@ -38,15 +39,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
     <RelativeLayout
+        android:layout_marginBottom="20px"
+        android:layout_marginRight="20px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_marginRight="20px"
             android:layout_alignParentRight="true"
             android:id="@+id/iv_add"
             android:src="@mipmap/ic_add"
             android:layout_width="80px"
             android:layout_height="80px"/>
-        
     </RelativeLayout>
 </LinearLayout>

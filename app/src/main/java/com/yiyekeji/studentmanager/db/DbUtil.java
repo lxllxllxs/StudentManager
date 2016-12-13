@@ -1,6 +1,7 @@
 package com.yiyekeji.studentmanager.db;
 
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
 
 import com.yiyekeji.studentmanager.StuApp;
 import com.yiyekeji.studentmanager.bean.Administrator;
@@ -10,6 +11,8 @@ import com.yiyekeji.studentmanager.bean.DaoSession;
 import com.yiyekeji.studentmanager.bean.Student;
 import com.yiyekeji.studentmanager.bean.StudentDao;
 import com.yiyekeji.studentmanager.utils.LogUtil;
+
+import java.util.ArrayList;
 
 import de.greenrobot.dao.query.Query;
 
@@ -55,13 +58,20 @@ public class DbUtil {
     }
 
 
-    public static  Student queryStudent(String keyword){
-        Query query = studentDao.queryBuilder()
-                .whereOr(StudentDao.Properties.Name.eq(keyword),StudentDao.Properties.Id.eq(keyword))
-                .build();
-        if (query.list().size()<1){
-            return null;
+    public static ArrayList<Student> queryStudent(String keyword){
+        Query query;
+        if (TextUtils.isEmpty(keyword)){
+            query= studentDao.queryBuilder()
+                    .build();
+        }else {
+            query = studentDao.queryBuilder()
+                    .whereOr(StudentDao.Properties.Name.eq(keyword),
+                            StudentDao.Properties.StudentId.eq(keyword))
+                    .build();
         }
-        return (Student)query.list().get(0);
+        if (query.list().size()<1){
+            return new ArrayList<Student>();
+        }
+        return (ArrayList<Student>) query.list();
     }
 }

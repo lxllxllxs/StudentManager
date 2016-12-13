@@ -63,7 +63,7 @@
 
         <ImageView
             android:layout_marginLeft="50px"
-            android:src="@mipmap/ic_noSelect"
+            android:src="@mipmap/ic_noselect"
             android:id="@+id/iv_female"
             android:layout_width="50px"
             android:layout_height="match_parent"/>
@@ -75,6 +75,32 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+        android:layout_marginTop="10px"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80px">
+        <TextView
+            android:textSize="25px"
+            android:textColor="@color/black"
+            android:text="年龄："
+            android:gravity="center"
+            android:layout_width="150px"
+            android:layout_height="match_parent"/>
+        <EditText
+            android:id="@+id/edt_age"
+            android:background="@drawable/bg_whitesolid_6radius_whitestroke"
+            android:textColor="@color/black"
+            android:textSize="25px"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:background="@drawable/bg_whitesolid_6radius_whitestroke"
