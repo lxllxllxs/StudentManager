@@ -9,7 +9,7 @@
               android:paddingRight="20px"
               android:layout_height="80px">
     <ImageView
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/iv_status"
         android:layout_width="50px"
         android:src="@mipmap/ic_noselect"

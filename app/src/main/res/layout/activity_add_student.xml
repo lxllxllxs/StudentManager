@@ -6,6 +6,7 @@
               android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tvTitle"
         android:text="添加学生信息"
         android:textSize="25px"
         android:gravity="center"

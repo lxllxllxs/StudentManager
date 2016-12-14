@@ -26,7 +26,7 @@ import butterknife.OnClick;
  * Created by lxl on 2016/12/13.
  */
 public class AddStudentActivity extends BaseActivity {
-    private static final int RESULT_LOAD_IMAGE =0x123 ;
+    private static final int RESULT_LOAD_IMAGE = 0x123;
     @InjectView(R.id.iv_head)
     ImageView ivHead;
     @InjectView(R.id.edt_name)
@@ -47,8 +47,10 @@ public class AddStudentActivity extends BaseActivity {
     TextView tvConfirm;
     @InjectView(R.id.edt_age)
     EditText edtAge;
-    private boolean isMan=true;
-    private String sex="男";
+    @InjectView(R.id.tvTitle)
+    TextView tvTitle;
+    private boolean isMan = true;
+    private String sex = "男";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,20 +63,23 @@ public class AddStudentActivity extends BaseActivity {
 
 
     Student student2;
+
     private void initData() {
-        student2=getIntent().getParcelableExtra("student");
+        student2 = getIntent().getParcelableExtra("student");
     }
+
     private void initView() {
         if (student2 != null) {
             if (!TextUtils.isEmpty(student.getHeadImg())) {
                 ivHead.setImageBitmap(BitmapFactory.decodeFile(student2.getHeadImg()));
             }
+            tvTitle.setText("修改学生信息");
             edtStudentId.setText(student2.getStudentId());
             edtNote.setText(student2.getNote());
             edtAge.setText(student2.getAge());
             edtPhone.setText(student2.getPhone());
             edtName.setText(student2.getName());
-            sex=student2.getSex();
+            sex = student2.getSex();
             if (sex.equals("男")) {
                 isMan = true;
                 ivMan.setImageResource(R.mipmap.ic_select);
@@ -87,12 +92,11 @@ public class AddStudentActivity extends BaseActivity {
     }
 
 
-
-    @OnClick({R.id.tv_cancle, R.id.tv_confirm, R.id.iv_man, R.id.iv_female,R.id.iv_head})
+    @OnClick({R.id.tv_cancle, R.id.tv_confirm, R.id.iv_man, R.id.iv_female, R.id.iv_head})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_head:
-               selectImg();
+                selectImg();
                 break;
             case R.id.tv_cancle:
                 finish();
@@ -114,12 +118,13 @@ public class AddStudentActivity extends BaseActivity {
     }
 
     private void selectImg() {
-        Intent i = new Intent(Intent.ACTION_PICK, 
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        Intent i = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
-    Student  student= new Student();
+    Student student = new Student();
+
     private void addOrUpdata() {
         if (TextUtils.isEmpty(edtName.getText().toString())) {
             showShortToast("姓名不能为空！");
@@ -144,8 +149,8 @@ public class AddStudentActivity extends BaseActivity {
             student.setId(student2.getId());
             DbUtil.upDataStudent(student);
             showShortToast("修改成功！");
-        }else {
-           boolean idSuccess= DbUtil.creatStudent(student);
+        } else {
+            boolean idSuccess = DbUtil.creatStudent(student);
             if (idSuccess) {
                 showShortToast("创建成功！");
             } else {
@@ -163,7 +168,7 @@ public class AddStudentActivity extends BaseActivity {
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
             Cursor cursor = getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
@@ -171,7 +176,7 @@ public class AddStudentActivity extends BaseActivity {
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
-            LogUtil.d("onActivity",picturePath);
+            LogUtil.d("onActivity", picturePath);
             cursor.close();
             ivHead.setImageBitmap(BitmapFactory.decodeFile(picturePath));
             student.setHeadImg(picturePath);

@@ -43,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="70px"/>
     </LinearLayout>
+    <include layout="@layout/include_main_head"/>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
