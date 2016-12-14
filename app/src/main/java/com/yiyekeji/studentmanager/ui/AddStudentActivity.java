@@ -70,7 +70,7 @@ public class AddStudentActivity extends BaseActivity {
 
     private void initView() {
         if (student2 != null) {
-            if (!TextUtils.isEmpty(student.getHeadImg())) {
+            if (!TextUtils.isEmpty(student2.getHeadImg())) {
                 ivHead.setImageBitmap(BitmapFactory.decodeFile(student2.getHeadImg()));
             }
             tvTitle.setText("修改学生信息");

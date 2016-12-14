@@ -16,6 +16,7 @@
         android:layout_height="match_parent"/>
 
     <ImageView
+        android:scaleType="centerCrop"
         android:padding="5px"
         android:src="@mipmap/ic_default_head"
         android:id="@+id/iv_head"

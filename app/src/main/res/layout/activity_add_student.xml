@@ -8,17 +8,19 @@
     <TextView
         android:id="@+id/tvTitle"
         android:text="添加学生信息"
-        android:textSize="25px"
+        android:textSize="30px"
         android:gravity="center"
         android:textColor="@color/white"
         android:background="@color/theme_blue"
         android:layout_width="match_parent"
         android:layout_height="90px"/>
     <ImageView
+        android:layout_marginTop="10px"
+        android:scaleType="centerCrop"
         android:id="@+id/iv_head"
         android:src="@mipmap/ic_default_head"
-        android:layout_width="200px"
-        android:layout_height="200px"/>
+        android:layout_width="300px"
+        android:layout_height="300px"/>
 
     <LinearLayout
         android:background="@drawable/bg_whitesolid_6radius_whitestroke"
