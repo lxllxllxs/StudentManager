@@ -5,24 +5,22 @@
               android:layout_width="match_parent"
               android:paddingLeft="20px"
               android:layout_marginBottom="1px"
-              android:background="@color/white"
+              android:background="@color/theme_blue"
               android:paddingRight="20px"
               android:layout_height="80px">
     <ImageView
-        android:visibility="invisible"
-        android:id="@+id/iv_status"
+        android:visibility="gone"
         android:layout_width="50px"
         android:src="@mipmap/ic_noselect"
         android:layout_height="match_parent"/>
 
     <ImageView
         android:padding="5px"
+        android:visibility="invisible"
         android:src="@mipmap/ic_default_head"
-        android:id="@+id/iv_head"
         android:layout_width="80px"
         android:layout_height="match_parent"/>
     <TextView
-        android:id="@+id/tv_name"
         android:text="姓名"
         android:textSize="25px"
         android:gravity="center"
@@ -32,7 +30,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
     <TextView
-        android:id="@+id/tv_studentId"
         android:text="学号"
         android:textSize="25px"
         android:gravity="center"
@@ -42,7 +39,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
     <TextView
-        android:id="@+id/tv_age"
         android:text="年龄"
         android:textSize="25px"
         android:gravity="center"
@@ -52,7 +48,6 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
     <TextView
-        android:id="@+id/tv_sex"
         android:text="性别"
         android:textSize="25px"
         android:gravity="center"

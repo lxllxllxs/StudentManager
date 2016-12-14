@@ -41,8 +41,23 @@ public class DbUtil {
     public static   void createAdmin(Administrator administrator){
         administratorDao.insert(administrator);
     }
-    public static   void creatStudent(Student  student){
+    public static  boolean creatStudent(Student  student){
+        Query query = studentDao.queryBuilder()
+                .where(StudentDao.Properties.StudentId.eq(student.getStudentId()))
+                .build();
+        if (query.list().size()>0){
+            return false;
+        }
         studentDao.insert(student);
+        return true;
+    }
+    public static  boolean delStudent(Student  student){
+        studentDao.delete(student);
+        return true;
+    }
+
+    public static   void upDataStudent(Student  student){
+        studentDao.update(student);
     }
 
 

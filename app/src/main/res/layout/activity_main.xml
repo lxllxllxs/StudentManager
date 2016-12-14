@@ -3,7 +3,17 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:background="@color/gray"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
               android:layout_height="match_parent">
+    <TextView
+        android:text="学生信息管理系统"
+        android:textSize="25px"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:background="@color/theme_blue"
+        android:layout_width="match_parent"
+        android:layout_height="90px"/>
     <LinearLayout
         android:paddingLeft="15px"
         android:paddingRight="15px"
@@ -33,18 +43,32 @@
             android:layout_width="wrap_content"
             android:layout_height="70px"/>
     </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_weight="1"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tvEmptyView"
+            android:visibility="gone"
+            android:text="暂无内容！"
+            android:textSize="30px"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
     <RelativeLayout
         android:layout_marginBottom="20px"
         android:layout_marginRight="20px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
             android:id="@+id/iv_add"
             android:src="@mipmap/ic_add"
             android:layout_width="80px"

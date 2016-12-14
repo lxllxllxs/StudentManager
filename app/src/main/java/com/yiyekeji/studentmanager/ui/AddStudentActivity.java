@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,7 +17,6 @@ import com.yiyekeji.studentmanager.bean.Student;
 import com.yiyekeji.studentmanager.db.DbUtil;
 import com.yiyekeji.studentmanager.ui.base.BaseActivity;
 import com.yiyekeji.studentmanager.utils.LogUtil;
-import com.yiyekeji.studentmanager.view.CircleImageView;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -28,7 +28,7 @@ import butterknife.OnClick;
 public class AddStudentActivity extends BaseActivity {
     private static final int RESULT_LOAD_IMAGE =0x123 ;
     @InjectView(R.id.iv_head)
-    CircleImageView ivHead;
+    ImageView ivHead;
     @InjectView(R.id.edt_name)
     EditText edtName;
     @InjectView(R.id.iv_man)
@@ -59,9 +59,16 @@ public class AddStudentActivity extends BaseActivity {
         initView();
     }
 
+
+    Student student2;
+    private void initData() {
+        student2=getIntent().getParcelableExtra("student");
+    }
     private void initView() {
         if (student2 != null) {
-            ivHead.setImageBitmap(BitmapFactory.decodeFile(student2.getHeadImg()));
+            if (!TextUtils.isEmpty(student.getHeadImg())) {
+                ivHead.setImageBitmap(BitmapFactory.decodeFile(student2.getHeadImg()));
+            }
             edtStudentId.setText(student2.getStudentId());
             edtNote.setText(student2.getNote());
             edtAge.setText(student2.getAge());
@@ -79,10 +86,7 @@ public class AddStudentActivity extends BaseActivity {
         }
     }
 
-    Student student2;
-    private void initData() {
-        student2=getIntent().getParcelableExtra("student");
-    }
+
 
     @OnClick({R.id.tv_cancle, R.id.tv_confirm, R.id.iv_man, R.id.iv_female,R.id.iv_head})
     public void onClick(View view) {
@@ -94,7 +98,7 @@ public class AddStudentActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_confirm:
-                createStudent();
+                addOrUpdata();
                 break;
             case R.id.iv_man:
                 ivMan.setImageResource(R.mipmap.ic_select);
@@ -112,22 +116,44 @@ public class AddStudentActivity extends BaseActivity {
     private void selectImg() {
         Intent i = new Intent(Intent.ACTION_PICK, 
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
         startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
-    Student   student= new Student();
-    private void createStudent() {
+    Student  student= new Student();
+    private void addOrUpdata() {
+        if (TextUtils.isEmpty(edtName.getText().toString())) {
+            showShortToast("姓名不能为空！");
+            return;
+        }
+        if (TextUtils.isEmpty(edtAge.getText().toString())) {
+            showShortToast("年龄不能为空！");
+            return;
+        }
+        if (TextUtils.isEmpty(edtStudentId.getText().toString())) {
+            showShortToast("学号不能为空！");
+            return;
+        }
         student.setName(edtName.getText().toString());
         student.setAge(edtAge.getText().toString());
         student.setNote(edtNote.getText().toString());
-        student.setPhone(edtNote.getText().toString());
+        student.setPhone(edtPhone.getText().toString());
         student.setStudentId(edtStudentId.getText().toString());
         student.setSex(sex);
 
-        DbUtil.creatStudent(student);
-
-        showShortToast("创建成功！");
+        if (student2 != null) {
+            student.setId(student2.getId());
+            DbUtil.upDataStudent(student);
+            showShortToast("修改成功！");
+        }else {
+           boolean idSuccess= DbUtil.creatStudent(student);
+            if (idSuccess) {
+                showShortToast("创建成功！");
+            } else {
+                showShortToast("学号重复！");
+                return;
+            }
+        }
+        setResult(RESULT_OK);
         finish();
     }
 

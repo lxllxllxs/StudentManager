@@ -6,10 +6,16 @@
               android:padding="15px"
               android:gravity="center_horizontal"
               android:layout_height="match_parent">
-    
+
+    <ImageView
+        android:layout_marginTop="250px"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
     <LinearLayout
+        android:layout_marginTop="50px"
         android:background="@drawable/bg_whitesolid_6radius_whitestroke"
-        android:layout_marginTop="350px"
         android:orientation="horizontal"
         android:layout_width="500px"
         android:layout_height="80px">
@@ -86,5 +92,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
     </LinearLayout>
-
+    <View
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+    <TextView
+        android:layout_marginBottom="20px"
+        android:textSize="25px"
+        android:text="陈树洲"
+        android:gravity="center"
+        android:textColor="@color/gray_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
